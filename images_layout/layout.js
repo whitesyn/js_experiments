@@ -106,16 +106,11 @@
 				y               = that.currentY,
 				cellsAvailable  = cells[0].length - that.currentX,
 				couldFillCells  = (that.imageParams.width / that.CELL_SIZE) | 0,
-				fillX           = Math.min(Math.min(cellsAvailable, couldFillCells), 2),
+				fillX           = Math.min(cellsAvailable, couldFillCells),
 				fillY           = 1;
 
 			if (cells[y + 1] && cells[y + 1][x - 1] !== '#' && that.imageParams.height > that.CELL_SIZE * 2) {
 				fillY = 2;
-			}
-
-			if (that.rowsCount >= 2) {
-				fillX = 1;
-				fillY = 1;
 			}
 
 			if (fillX > 1) {
@@ -138,7 +133,7 @@
 				fillY = 1;
 
 			// if next row available and cell from the left in the next row was filled before
-			if (cells[y + 1] && cells[y + 1][x] === '#' && (cells[y + 1][x - 1] !== '#') && that.rowsCount < 2) {
+			if (cells[y + 1] && cells[y + 1][x] === '#' && (cells[y + 1][x - 1] !== '#')) {
 				fillY = 2;
 			}
 
