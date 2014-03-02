@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Images Layout</title>
+        <style>
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            html, body {
+                width: 100%;
+                height: 100%;
+            }
+
+            .images-wrapper {
+                position: relative;
+            }
+
+            .images-wrapper i {
+                display: block;
+                position: absolute;
+                padding: 2px;
+            }
+
+            .images-wrapper i img {
+                background-size: cover;
+                background-position: 50% 25%;
+                width: 100%;
+                height: 100%;
+            }
+
+            .images-wrapper i span {
+                display: none;
+                left: 0;
+                bottom: 0;
+                position: absolute;
+                background-color: rgba(230, 230, 230, .5);
+                width: 100%;
+                font-style: normal;
+                font-family: Arial, serif;
+                font-size: 12px;
+                line-height: 20px;
+                padding: 0 5px;
+            }
+
+            .images-wrapper i:hover span {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container" class="images-wrapper"></div>
+    </body>
+
+    <script src="preloader.js"></script>
+    <script src="layout.js"></script>
+
+    <script>
+        window.onload = function () {
+            var data = [
+                {id: 1, src: 'https://lh4.googleusercontent.com/-FQNMV5kNh48/T5r2k7e2KvI/AAAAAAAALWc/9AfwLKOa_SE/w394-h214-n-k/NewsThatBarcelonaArentInTheFinalsReachesMadrid.gif'},
+               // {id: 111, src: 'https://lh4.googleusercontent.com/-FQNMV5kNh48/T5r2k7e2KvI/AAAAAAAALWc/9AfwLKOa_SE/w394-h214-n-k/NewsThatBarcelonaArentInTheFinalsReachesMadrid.gif?1111'},
+                {id: 2, src: 'https://lh3.googleusercontent.com/-0IYWwoU404o/T5hFqf8Fd7I/AAAAAAAALV4/ZWtvualW-gs/w302-h214-n-k/SirFrancisBacon.jpg'},
+                {id: 3, src: 'https://lh5.googleusercontent.com/-MpTZPLZI3-E/T5eMgJVx2JI/AAAAAAAALVE/VMzdGSUkYmE/w379-h214-n-k/winners_losers.jpg'},
+                {id: 4, src: 'https://lh5.googleusercontent.com/-DjiYXWoFDkU/T5eEoZ9w6nI/AAAAAAAALUk/7kDnKp66zgM/w453-h272-n-k/vintcerf.jpg'},
+                {id: 41, src: 'https://lh5.googleusercontent.com/-DjiYXWoFDkU/T5eEoZ9w6nI/AAAAAAAALUk/7kDnKp66zgM/w453-h272-n-k/vintcerf.jpg?1'},
+                {id: 5, src: 'https://lh3.googleusercontent.com/-GOiSlIr0JQc/T5Yrpil6MII/AAAAAAAALTY/IeVknUkvKoQ/w210-h272-n-k/SmileBestMakeUp.jpg'},
+                {id: 6, src: 'https://lh4.googleusercontent.com/-5B9kjDPgIGo/T5BydZ6yROI/AAAAAAAALRo/pyXBrGkGwl4/w412-h272-n-k/babyimagedrawing.jpg'},
+                {id: 7, src: 'https://lh5.googleusercontent.com/-JfMhSzmXbCI/T5BI9pyK67I/AAAAAAAALQ0/nbTo6U7V8xU/w262-h261-n-k/CloudHeart_crop.png'},
+                {id: 8, src: 'https://lh6.googleusercontent.com/-jLD2DhgVGJM/T5A8cIfVtaI/AAAAAAAALQE/P1_nVvA5C5g/w350-h261-n-k/BatmanBike.png'},
+                {id: 9, src: 'https://lh6.googleusercontent.com/-Ryh7FRiC2OA/T4sECH3OVSI/AAAAAAAALN0/WAuVjPybP5Y/w463-h261-n-k/AshleyYoung.gif'},
+                {id: 10, src: 'https://lh6.googleusercontent.com/-cTCu7LRr1pI/T4iYovlrbXI/AAAAAAAALL0/-ndB-ytwp9o/w329-h183-n-k/GolfBubbaWatsonAerialView.jpg'},
+                {id: 11, src: 'https://lh5.googleusercontent.com/-JzzEr9Eile8/T4iWULtQixI/AAAAAAAALLM/BWpJrLLzrT8/w189-h183-n-k/OpticalIllusion_SteppingFeet.gif'},
+                {id: 12, src: 'https://lh5.googleusercontent.com/-qnSnRchY5uk/T4iUVyAxV-I/AAAAAAAALKs/3RKBW2Cuv2E/w100-h183-n-k/FBWhatPeopleLikeE.jpg'},
+                {id: 13, src: 'https://lh3.googleusercontent.com/-gM1yPNcJYpk/T4hpHVU5ZrI/AAAAAAAALJ4/dLBHh0yFrv0/w451-h183-n-k/SteveJobsRobertWayneSteveWozniak.jpg'},
+                {id: 14, src: 'https://lh6.googleusercontent.com/-Ryh7FRiC2OA/T4sECH3OVSI/AAAAAAAALN0/WAuVjPybP5Y/w463-h261-n-k/AshleyYoung.gif'}
+            ];
+
+            function onComplete(images, rowsCount) {
+                var container = document.getElementById('container'),
+                    html = [];
+
+                images.forEach(function (img, i) {
+                    html.push(
+                        '<i style="top: ' + img.top + 'px; left: ' + img.left + 'px; height: ' + img.height + 'px; width: ' + img.width + 'px;">' +
+                            '<img src="pixel.png" style="background-image: url(' + img.src + ')" />' +
+                            '<span>Some Photo Title</span>' +
+                        '</i>'
+                    );
+                });
+
+                container.innerHTML = html.join('');
+                container.style.height = rowsCount * 100 + 'px';
+            }
+
+            new ImagesLayout(data, onComplete);
+        };
+
+    </script>
+</html>
